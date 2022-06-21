@@ -5,13 +5,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./dist/reset.css" />
     <link rel="stylesheet" href="./dist/main.css" />
-    <script src="./dist/main.js"></script>
     <title>Purple Hearts</title>
-    <h1>(>^_^)> - - - 💜 ^(._.)^</h1>
+    <script src="./dist/main.js"></script>
   </head>
-
+  
+  
+  <header>
+    <div class="head-container">
+      
+      <canvas id="tutorial-canvas" width="100" height="40"></canvas>
+      <canvas id="title-canvas" width="400" height="40"></canvas>
+      <canvas id="control-canvas" width="270" height="40"></canvas>
+      
+    </div>
+    <h1>(>^_^)> --- 💜 ^(x_x)^</h1>
+  </header>
+  
   <body>
+    
+    <canvas id="game-canvas" width="900" height="600"></canvas>
+    <div style="display: none;">
+      <img src="assets/images/angry_cindy.jpg" id="player_img">
+      <img src="assets/images/cat1.png" id="cat_1">
+    </div>
+    <div class="timer" id="timer">0</div>
+    <div class="main-container">
+      <div class="text-display" id="textDisplay">
+        text
+      </div>
+      <textarea id="textInput" class="text-input" autofocus>textInput</textarea>
+    </div>
+    <script type="module" src="/src/index.js"></script>
   </body>
 
 </html>
