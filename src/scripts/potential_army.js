@@ -36,7 +36,8 @@ class PotentialArmy {
         const canvas = document.getElementById("game-canvas");
         const ctx = canvas.getContext("2d");
         ctx.clearRect(this.pos.x, this.pos.y, this.width, this.height)
-        // alpha = 0;
+        this.alpha = 0;
+        this.currentSong = "";
     }
 
     getRandomSong() {
@@ -61,12 +62,28 @@ class PotentialArmy {
     // }
 
     // processInputText() {
-    //     currentInput = songInputElement.value;
-    //     currentInputArr = currentInput.split('');
+    //     let charTyped = 0
+    //     let currentInput = songInputElement.value;
+    //     let currentInputArr = currentInput.split('');
 
-    //     characterTyped++;
+    //     charTyped++;
 
-    //     songSpan
+    //     songSpanArr = songDisplayElement.querySelectorAll('span');
+    //     songSpanArr.forEach((char, i) => {
+    //         let typedChar = currentInputArr[i];
+
+    //         //char not currently typed
+    //         if (typedChar === null) {
+    //             char.classList.remove('correctChar');
+    //             char.classList.remove('incorrectChar');
+    //         } else if (typedChar === char.innerText) {
+    //             char.classList.add('correctChar');
+    //             char.classList.remove('incorrectChar');
+    //         } else {
+    //             char.classList.add('incorrectChar');
+    //             char.classList.remove('correctChar');
+    //         }
+    //     });
     // }
 }
 
