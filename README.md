@@ -11,8 +11,8 @@
     + Once in gameplay mode, includes a button in top left corner to access tutorial again 
 
 # Wireframes
-![home_wireframe](https://github.com/vuongcindy/JS_project/blob/main/images/home_wireframe.png)
-![game_wireframe](https://github.com/vuongcindy/JS_project/blob/main/images/game_wireframe.png)
+![home_wireframe](https://github.com/vuongcindy/JS_project/blob/main/assets/images/home_wireframe.png)
+![game_wireframe](https://github.com/vuongcindy/JS_project/blob/main/assets/images/game_wireframe.png)
 
 # Technologies, Libraries, APIs
   + Genius Lyrics API will be used to fetch words
