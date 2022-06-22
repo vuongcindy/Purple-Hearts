@@ -1,14 +1,12 @@
 import Player from "./scripts/player.js";
 import PotentialArmy from "./scripts/potential_army.js"
 import Game from "./scripts/game.js"
-// import GameView from "./scripts/game_view.js"
 
 window.Player = Player;
 window.PotentialArmy = PotentialArmy;
 window.Game = Game;
-// window.GameView = GameView;
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById("game-canvas");
     const ctx = canvas.getContext("2d");
     canvas.width = 900;
@@ -44,7 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     const newGame = new Game();
-    newGame.draw()
+    newGame.start()
+    // newGame.newPotentialArmy();
+
+
 
     function animate() {
         window.requestAnimationFrame(animate)
@@ -52,29 +53,63 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = "white";
         ctx.fillRect(25, 25, canvas.width, canvas.height)
 
-        // collision points
-        // ctx.fillStyle = "";
-        // ctx.fillRect(35, 45, 100, 300);
-        // ctx.fillRect(35, 235, 85, 65);
-        // ctx.fillRect(35, 420, 85, 65);
-        
-        // potential enemy starting positions
-        ctx.strokeStyle = "red"
-
         // anchored text starting location
-        ctx.font = '16px Arial'
+        ctx.font = '20px Arial'
         ctx.fillText('Text1', 790, 110);
         ctx.fillText('Text2', 790, 300);
         ctx.fillText('Text3', 790, 490);
         
-        // ctx.fillRect(75, 75, 5, 380);
+        let playerPos = testplayer.pos.y
+        let inPARow = null;
+
+        // if (Date.now > newGame.generatePATime()) {
+        //     newGame.addPotentialArmy();
+        //     newGame.generatePATime;
+        // }
+        // console.log(newGame.currentPotentialArmy)
+        newGame.currentPotentialArmy.forEach(pa => {
+            pa.drawPA();
+            pa.updatePos();
+            if (pa.pos.x <= 35) {
+                newGame.remove(pa)
+            }
+        })
+        for (let i = 0; i < newGame.currentPotentialArmy.length - 1; i++) {
+        //     // (function(i) {
+        //     //     setTimeout(function() {
+        //     //         currentPA.drawPA();
+        //     //     }, 5000)
+        //     // })(i);
+            let currentPA = newGame.currentPotentialArmy[i]
+            
+        //     // setTimeout(() => { currentPA.updatePos() }, 50000)
+
+        //     // console.log(currentPA.pos.y, playerPos)
+
+            if (currentPA.pos.y === playerPos) {
+                // console.log(currentPA.pos.y, playerPos, "is equal")
+                inPARow = currentPA
+            // } else {
+            //     // console.log(currentPA.pos.y, playerPos, "is NOT equal")
+            }
+            
+            
+        };
+        var songInputText = document.getElementById('songInput').value;
+        // if (inPARow !== null && currentPA.processInputText() === currentPA.inPARow.updateSong()) {
+        if (inPARow !== null && songInputText === inPARow.currentSong) {
+            document.getElementById('songInput').value = '';
+            inPARow.clear()
+            newGame.remove(inPARow)
+            // newGame.addPotentialArmy()
+        }
+
+        ctx.strokeStyle = "purple" // lanes
+
         ctx.beginPath();
         ctx.moveTo(77, 77);
         ctx.lineTo(77, 455);
         ctx.stroke();
-        
-        // enemy movement
-        ctx.fillStyle = "red"
         
         // lane 1
         ctx.beginPath();
@@ -93,37 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.moveTo(77, 455);
         ctx.lineTo(810, 455);
         ctx.stroke();
-        
-        let playerPos = testplayer.pos.y
-        let current_in_row;
-
-        for (let i = 0; i < newGame.currentPotentialArmy.length - 1; i++) {
-            let current_cat = newGame.currentPotentialArmy[i]
-
-            setTimeout(current_cat.drawPA(), newGame.drawTimer())
-            
-            setTimeout(current_cat.updatePos(), newGame.drawTimer())
-            
-            // newGame.currentPotentialArmy[i].removeFromBoard(currentPotentialArmy[i]);
-            // newGame.currentPotentialArmy[i].newPotentialArmy()
-
-            
-            if (current_cat.pos.y === playerPos) {
-                current_in_row = current_cat
-            }
-            
-            
-        };
-        var songInputText = document.getElementById('songInput').value;
-        if (songInputText === current_in_row.currentSong) {
-        //     // document.getElementById('songInput').value = '';
-            console.log("poof")
-        //     // make cat disappear
-        }
-
 
         testplayer.draw();
-        
     }
     
     animate();
