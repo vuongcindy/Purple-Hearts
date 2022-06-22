@@ -2,41 +2,69 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: #D8BFD8;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
+header > h1 {
+  display: flex;
+  font-size: 2rem;
+  justify-content: center;
+  // margin: 1rem;
 }
 
-// #game-canvas {
-//     background: white;
-//     border-radius: 5px;
-//   }
-  
-  #tutorial-canvas {
-    background-color: white;
-    border-radius: 5px;
-    margin: 5px;
-  }
-  
-  #title-canvas {
-    background-color: white;
-    border-radius: 5px;
-    margin: 5px;
-  }
-  
-  #control-canvas {
-    background-color: white;
-    border-radius: 5px;
-    margin: 5px;
-  }
+body {
+  background-color: #D8BFD8;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
 
-// #head-container {
-//     display: flex;
-//     justify-content: space-between;
-// }
+#game-canvas {
+  background: white;
+  border-radius: 5px;
+}
+
+.song-display {
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+
+#timer {
+  color: black;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.song-input {
+  background-color: #D8BFD8;
+  border: 2px solid white;
+  outline: none;
+  width: 100%;
+  height: 4rem;
+  margin: auto;
+  resize: none;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border-radius: .5rem;
+}
+
+.song-input:focus {
+  border-color: black;
+}
+
+.main-container {
+  display: block;
+  margin-top: -3rem;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+  text-decoration: underline;
+}

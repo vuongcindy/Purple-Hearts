@@ -1,11 +1,14 @@
 import Player from "./scripts/player.js";
 import PotentialArmy from "./scripts/potential_army.js"
+import Game from "./scripts/game.js"
+// import GameView from "./scripts/game_view.js"
 
 window.Player = Player;
 window.PotentialArmy = PotentialArmy;
+window.Game = Game;
+// window.GameView = GameView;
 
-
-window.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById("game-canvas");
     const ctx = canvas.getContext("2d");
     canvas.width = 900;
@@ -14,18 +17,18 @@ window.addEventListener('DOMContentLoaded', () => {
     document.onkeyup = function(e) {
         switch(e.key) {
             case "ArrowUp": 
-            if (testplayer.pos.y === 255) {
-                testplayer.pos.y = 65
-            } else if (testplayer.pos.y === 433) {
-                testplayer.pos.y = 255
+            if (testplayer.pos.y === 235) {
+                testplayer.pos.y = 35
+            } else if (testplayer.pos.y === 420) {
+                testplayer.pos.y = 235
             }
             break;
             
             case "ArrowDown": 
-            if (testplayer.pos.y === 65) {
-                testplayer.pos.y = 255
-            } else if (testplayer.pos.y === 255) {
-                testplayer.pos.y = 433
+            if (testplayer.pos.y === 35) {
+                testplayer.pos.y = 235
+            } else if (testplayer.pos.y === 235) {
+                testplayer.pos.y = 420
             }
             break;
             
@@ -35,43 +38,29 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const testplayer = new Player({
         pos: {
-            x: 65,
-            y: 255
+            x: 35,
+            y: 235
         }
     })
 
-    const cat1 = new PotentialArmy({
-        pos: {
-            x: 798,
-            y: 65
-        }
-    })
-
-    const cat2 = new PotentialArmy({
-        pos: {
-            x: 798,
-            y: 257
-        }
-    })
-
-    const cat3 = new PotentialArmy({
-        pos: {
-            x: 798,
-            y: 443
-        }
-    })
+    const newGame = new Game();
+    newGame.draw()
 
     function animate() {
         window.requestAnimationFrame(animate)
         
         ctx.fillStyle = "white";
         ctx.fillRect(25, 25, canvas.width, canvas.height)
+
+        // collision points
+        // ctx.fillStyle = "";
+        // ctx.fillRect(35, 45, 100, 300);
+        // ctx.fillRect(35, 235, 85, 65);
+        // ctx.fillRect(35, 420, 85, 65);
         
         // potential enemy starting positions
         ctx.strokeStyle = "red"
-        // ctx.strokeRect(798, 65, 25, 25);
-        // ctx.strokeRect(798, 257, 25, 25);
-        // ctx.strokeRect(798, 443, 25, 25);
+
         // anchored text starting location
         ctx.font = '16px Arial'
         ctx.fillText('Text1', 790, 110);
@@ -104,11 +93,38 @@ window.addEventListener('DOMContentLoaded', () => {
         ctx.moveTo(77, 455);
         ctx.lineTo(810, 455);
         ctx.stroke();
+        
+        let playerPos = testplayer.pos.y
+        let current_in_row;
+
+        for (let i = 0; i < newGame.currentPotentialArmy.length - 1; i++) {
+            let current_cat = newGame.currentPotentialArmy[i]
+
+            setTimeout(current_cat.drawPA(), newGame.drawTimer())
+            
+            setTimeout(current_cat.updatePos(), newGame.drawTimer())
+            
+            // newGame.currentPotentialArmy[i].removeFromBoard(currentPotentialArmy[i]);
+            // newGame.currentPotentialArmy[i].newPotentialArmy()
+
+            
+            if (current_cat.pos.y === playerPos) {
+                current_in_row = current_cat
+            }
+            
+            
+        };
+        var songInputText = document.getElementById('songInput').value;
+        if (songInputText === current_in_row.currentSong) {
+        //     // document.getElementById('songInput').value = '';
+            console.log("poof")
+        //     // make cat disappear
+        }
+
 
         testplayer.draw();
-        cat1.draw();
-        cat2.draw();
-        cat3.draw();
+        
     }
+    
     animate();
 });

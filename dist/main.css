@@ -5,6 +5,12 @@
   box-sizing: border-box;
 }
 
+header > h1 {
+  display: flex;
+  font-size: 2rem;
+  justify-content: center;
+}
+
 body {
   background-color: #D8BFD8;
   color: white;
@@ -16,20 +22,51 @@ body {
   margin: 0;
 }
 
-#tutorial-canvas {
-  background-color: white;
+#game-canvas {
+  background: white;
   border-radius: 5px;
-  margin: 5px;
 }
 
-#title-canvas {
-  background-color: white;
-  border-radius: 5px;
-  margin: 5px;
+.song-display {
+  color: black;
+  display: flex;
+  justify-content: center;
 }
 
-#control-canvas {
-  background-color: white;
-  border-radius: 5px;
-  margin: 5px;
+#timer {
+  color: black;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.song-input {
+  background-color: #D8BFD8;
+  border: 2px solid white;
+  outline: none;
+  width: 100%;
+  height: 4rem;
+  margin: auto;
+  resize: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+
+.song-input:focus {
+  border-color: black;
+}
+
+.main-container {
+  display: block;
+  margin-top: -3rem;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+  text-decoration: underline;
 }
