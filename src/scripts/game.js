@@ -24,7 +24,7 @@ class Game {
     newPotentialArmy() {
         let t = this.delayTimer();
 
-        if(this.currentPotentialArmy.length < 4) {
+        if(this.currentPotentialArmy.length < 15) {
             let newPotentialArmy = new PotentialArmy( {pos: {x: 0, y: 0}} );
             newPotentialArmy.randomStartPos()
             this.currentPotentialArmy.push(newPotentialArmy);
@@ -34,31 +34,56 @@ class Game {
         }
     }
 
-    updateScore(PAInPlayerRow) {
-        // First we need to get a reference tot he score
-
-        var score = parseInt(document.getElementById("current_score").innerHTML)   
+    increaseScore(PAInPlayerRow) {
+        var score = parseInt(document.getElementById("current_score").innerHTML)  
+        var currentLvlScore = parseInt(document.getElementById('current_level_score').innerHTML) 
 
         if (score === 0) {
             score = PAInPlayerRow.currentSong.length;
+            currentLvlScore = PAInPlayerRow.currentSong.length;
         } else {
             score = score + PAInPlayerRow.currentSong.length;
+            currentLvlScore = currentLvlScore + PAInPlayerRow.currentSong.length;
         }
 
-        // console.log("current_score",score)
-
         document.getElementById("current_score").innerHTML = score;
+        document.getElementById("current_level_score").innerHTML = currentLvlScore;
     }
 
-    updateLevel() {
+    increaseLevel() {
         var level = parseInt(document.getElementById('current_level').innerHTML)
-        var points = parseInt(document.getElementById('current_score').innerHTML)
+        var score = parseInt(document.getElementById('current_score').innerHTML)
+        var currentLvlScore = parseInt(document.getElementById('current_level_score').innerHTML)
 
-        if(points / 10 > 1) {
+        if(currentLvlScore / 10 > 1) {
             document.getElementById('current_level').innerHTML = level + 1
-            document.getElementById('current_score').innerHTML = 0
+            document.getElementById('current_level_score').innerHTML = 0
         } 
     }
+
+    // decreaseScore(PAInPlayerRow) {
+    //     var score = parseInt(document.getElementById("current_score").innerHTML)  
+    //     var currentLvlScore = parseInt(document.getElementById('current_level_score').innerHTML) 
+
+    //     if (score !== 0) {
+    //         score = score - PAInPlayerRow.currentSong.length;
+    //         currentLvlScore = currentLvlScore - PAInPlayerRow.currentSong.length;
+    //     }
+
+    //     document.getElementById("current_score").innerHTML = score;
+    //     document.getElementById("current_level_score").innerHTML = currentLvlScore;
+    // }
+
+    // decreaseLevel() {
+    //     var level = parseInt(document.getElementById('current_level').innerHTML)
+    //     var score = parseInt(document.getElementById('current_score').innerHTML)
+    //     var currentLvlScore = parseInt(document.getElementById('current_level_score').innerHTML)
+
+    //     if(currentLvlScore / 10 > 1) {
+    //         document.getElementById('current_level').innerHTML = level - 1
+    //         document.getElementById('current_level_score').innerHTML = 0
+    //     } 
+    // }
 
     remove(potentialArmy) {
         this.currentPotentialArmy.splice(this.currentPotentialArmy.indexOf(potentialArmy), 1);

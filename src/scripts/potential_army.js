@@ -25,7 +25,8 @@ class PotentialArmy {
     drawPA() {
         const canvas = document.getElementById("game-canvas");
         const ctx = canvas.getContext("2d");
-        let cat1Img = document.getElementById("cat_1")
+        let cat1Img = document.getElementById("potential_army")
+        
         ctx.drawImage(cat1Img, this.pos.x, this.pos.y, this.width, this.height);
         
         ctx.fillStyle = "black"
@@ -36,7 +37,6 @@ class PotentialArmy {
         const canvas = document.getElementById("game-canvas");
         const ctx = canvas.getContext("2d");
         ctx.clearRect(this.pos.x, this.pos.y, this.width, this.height)
-        this.alpha = 0;
         this.currentSong = "";
     }
 
@@ -48,7 +48,7 @@ class PotentialArmy {
         let level = parseInt(document.getElementById('current_level').innerHTML)
 
         if (this.pos.x > 35) {
-            this.pos.x += (-3 * level);
+            this.pos.x += (-1 * level);
         } else if (this.pos.x <= 35) {
             this.clear()
         }

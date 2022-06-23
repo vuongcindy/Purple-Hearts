@@ -1,6 +1,7 @@
 # Purple Hearts
   As a dedicated BTS ARMY, you want to share your love and appreciation for the boys. There are potential ARMYs out there, show them some BTS songs and expand our fandom!
 
+
 # Functionality
   + Gameplay
     + Player can use up and down arrow keys to move between 3 lanes

@@ -1,17 +1,10 @@
 import Player from "./scripts/player.js";
-import PotentialArmy from "./scripts/potential_army.js"
-import Game from "./scripts/game.js"
+import PotentialArmy from "./scripts/potential_army.js";
+import Game from "./scripts/game.js";
 
 window.Player = Player;
 window.PotentialArmy = PotentialArmy;
 window.Game = Game;
-
-window.onload = function() {  
-}
-
-function startGame() {
-    console.log('start game')
-}
 
 window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById("game-canvas");
@@ -107,15 +100,18 @@ window.addEventListener('DOMContentLoaded', () => {
         // If we match the cat in the row
         if (PAInPlayerRow !== null && songInputText === PAInPlayerRow.currentSong) {
             document.getElementById('songInput').value = '';
-            newGame.updateScore(PAInPlayerRow);
+            newGame.increaseScore(PAInPlayerRow);
             PAInPlayerRow.clear()
             newGame.remove(PAInPlayerRow);
-        }
-
-
-        newGame.updateLevel()
+            newGame.increaseLevel()
+        } 
+        // else if (PAInPlayerRow !== null && songInputText === PAInPlayerRow.currentSong) {
+        //     newGame.decreaseScore(PAInPlayerRow);
+        //     newGame.decreaseLevel();
+        // }
 
         testplayer.draw();
     }
+    // document.getElementById('music').play();
     animate();
 });
