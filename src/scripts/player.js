@@ -1,4 +1,4 @@
-import Heart from "./heart";
+// import Heart from "./heart";
 class Player {
     constructor({ pos, color = "#AFEEEE" }) {
         this.pos = pos;

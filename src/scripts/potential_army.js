@@ -8,7 +8,7 @@ class PotentialArmy {
         this.width = 85;
         this.height = 65;
         this.velX = velX;
-        this.SONGS = ["kn","ks","my","jh","pj","kt","jj"];
+        this.SONGS = ["dynamite","friends","moon","respect","filter","dimple", "dna", "stay", "home", "begin", "lie", "awake", "lost", "stigma", "fire", "dope", "like", "coffee", "jump", "danger", "run", "mama", "idol", "tear", "home", "on", "lights", "butter", "her"];
         this.currentSong = "";
         this.getRandomSong();
         
@@ -17,7 +17,7 @@ class PotentialArmy {
 
     randomStartPos() {
         const possibleYPos = [35, 235, 420];
-        let tempX = 798;
+        let tempX = 1100;
         let tempY = possibleYPos[Math.floor((Math.random() * possibleYPos.length))];
         this.pos = { x: tempX, y: tempY }
     }
@@ -29,7 +29,7 @@ class PotentialArmy {
         ctx.drawImage(cat1Img, this.pos.x, this.pos.y, this.width, this.height);
         
         ctx.fillStyle = "black"
-        ctx.fillText(this.currentSong, this.pos.x + 27, this.pos.y + 75);
+        ctx.fillText(this.currentSong, this.pos.x + 10, this.pos.y + 75);
     }
 
     clear() {
@@ -45,8 +45,10 @@ class PotentialArmy {
     }
 
     updatePos() {
+        let level = parseInt(document.getElementById('current_level').innerHTML)
+
         if (this.pos.x > 35) {
-            this.pos.x += (-3);
+            this.pos.x += (-3 * level);
         } else if (this.pos.x <= 35) {
             this.clear()
         }

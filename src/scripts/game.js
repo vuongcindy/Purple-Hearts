@@ -1,5 +1,5 @@
 // import Player from "./player.js";
-import Heart from "./heart.js";
+// import Heart from "./heart.js";
 import PotentialArmy from "./potential_army.js";
 class Game {
     constructor() {
@@ -7,8 +7,8 @@ class Game {
         this.hearts = [];
         this.width = 100;
         this.height = 75;
+        this.score = 0;
         // this.objects = this.allObjects();
-        // this.generatePATime = Date.now() // time in ms
     }
 
     // add(obj) {
@@ -21,15 +21,11 @@ class Game {
     //     }
     // };
 
-    // addPotentialArmy() {
-    //     this.currentPotentialArmy.push(new PotentialArmy({ pos: {x: 0, y: 0}}))
-    // };
-
     newPotentialArmy() {
         let t = this.delayTimer();
 
         if(this.currentPotentialArmy.length < 4) {
-            let newPotentialArmy = new PotentialArmy( {pos: {x: 0, y: 0}});
+            let newPotentialArmy = new PotentialArmy( {pos: {x: 0, y: 0}} );
             newPotentialArmy.randomStartPos()
             this.currentPotentialArmy.push(newPotentialArmy);
             setTimeout(() => {
@@ -38,15 +34,30 @@ class Game {
         }
     }
 
-    // generateNextCatTime() {
-    //     this.generateCatTime = Date.now() + this.delayTimer();
-    // }
+    updateScore(PAInPlayerRow) {
+        // First we need to get a reference tot he score
 
-    start() {
-        this.newPotentialArmy();
-        for (let i = 0; i < this.currentPotentialArmy.length; i++) {
-            this.currentPotentialArmy[i].randomStartPos();
+        var score = parseInt(document.getElementById("current_score").innerHTML)   
+
+        if (score === 0) {
+            score = PAInPlayerRow.currentSong.length;
+        } else {
+            score = score + PAInPlayerRow.currentSong.length;
         }
+
+        // console.log("current_score",score)
+
+        document.getElementById("current_score").innerHTML = score;
+    }
+
+    updateLevel() {
+        var level = parseInt(document.getElementById('current_level').innerHTML)
+        var points = parseInt(document.getElementById('current_score').innerHTML)
+
+        if(points / 10 > 1) {
+            document.getElementById('current_level').innerHTML = level + 1
+            document.getElementById('current_score').innerHTML = 0
+        } 
     }
 
     remove(potentialArmy) {
@@ -55,7 +66,7 @@ class Game {
 
     // 1 - 4 secs in ms
     delayTimer(){
-        return Math.floor(Math.random() * 4000) + 1000;
+        return Math.floor(Math.random() * 3000) + 1000;
     }
 
     // allObjects() {

@@ -6,6 +6,13 @@ window.Player = Player;
 window.PotentialArmy = PotentialArmy;
 window.Game = Game;
 
+window.onload = function() {  
+}
+
+function startGame() {
+    console.log('start game')
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById("game-canvas");
     const ctx = canvas.getContext("2d");
@@ -32,16 +39,6 @@ window.addEventListener('DOMContentLoaded', () => {
             
             default: return;
         }
-        // document.getElementById('songInput').value.addEventListener()
-        // if (e.key === '13') {
-        //     e.preventDefault();
-        // }
-        $('#songInput').keydown(function(e){
-            if (e.which == '13') {
-              e.preventDefault();
-              e.stopPropagation();
-            }
-        });
     }
 
     const testplayer = new Player({
@@ -52,10 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     const newGame = new Game();
-    // newGame.start()
     newGame.newPotentialArmy();
-
-
 
     function animate() {
         window.requestAnimationFrame(animate)
@@ -63,14 +57,10 @@ window.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = "white";
         ctx.fillRect(25, 25, canvas.width, canvas.height)
 
-        // anchored text starting location
-        ctx.font = '25px Arial'
-        ctx.fillText('Text1', 790, 110);
-        ctx.fillText('Text2', 790, 300);
-        ctx.fillText('Text3', 790, 490);
-
+        ctx.font = '25px Arial' // anchored text
         ctx.strokeStyle = "purple" // lanes
 
+        // player lane
         ctx.beginPath();
         ctx.moveTo(77, 77);
         ctx.lineTo(77, 455);
@@ -79,29 +69,21 @@ window.addEventListener('DOMContentLoaded', () => {
         // lane 1
         ctx.beginPath();
         ctx.moveTo(77, 77);
-        ctx.lineTo(810, 77);
+        ctx.lineTo(1110, 77);
         ctx.stroke();
         
         // lane 2
         ctx.beginPath();
         ctx.moveTo(77, 267);
-        ctx.lineTo(810, 270);
+        ctx.lineTo(1110, 270);
         ctx.stroke();
         
         // lane 3
         ctx.beginPath();
         ctx.moveTo(77, 455);
-        ctx.lineTo(810, 455);
+        ctx.lineTo(1110, 455);
         ctx.stroke();
         
-        let playerPos = testplayer.pos.y
-        let inPARow = null;
-
-        // if (Date.now > newGame.generatePATime()) {
-        //     newGame.addPotentialArmy();
-        //     newGame.generatePATime;
-        // }
-        // console.log(newGame.currentPotentialArmy)
         newGame.currentPotentialArmy.forEach(pa => {
             pa.drawPA();
             pa.updatePos();
@@ -109,63 +91,31 @@ window.addEventListener('DOMContentLoaded', () => {
                 newGame.remove(pa)
             }
         })
+
+        let playerPos = testplayer.pos.y
+        let PAInPlayerRow = null;
+
         for (let i = 0; i < newGame.currentPotentialArmy.length - 1; i++) {
-        //     // (function(i) {
-        //     //     setTimeout(function() {
-        //     //         currentPA.drawPA();
-        //     //     }, 5000)
-        //     // })(i);
+
             let currentPA = newGame.currentPotentialArmy[i]
-            
-        //     // setTimeout(() => { currentPA.updatePos() }, 50000)
-
-        //     // console.log(currentPA.pos.y, playerPos)
-
             if (currentPA.pos.y === playerPos) {
-                // console.log(currentPA.pos.y, playerPos, "is equal")
-                inPARow = currentPA
-            // } else {
-            //     // console.log(currentPA.pos.y, playerPos, "is NOT equal")
+                PAInPlayerRow = currentPA
             }
-            
-            
         };
         var songInputText = document.getElementById('songInput').value;
-        // if (inPARow !== null && currentPA.processInputText() === currentPA.inPARow.updateSong()) {
-        if (inPARow !== null && songInputText === inPARow.currentSong) {
+
+        // If we match the cat in the row
+        if (PAInPlayerRow !== null && songInputText === PAInPlayerRow.currentSong) {
             document.getElementById('songInput').value = '';
-            inPARow.clear()
-            newGame.remove(inPARow)
-            // newGame.addPotentialArmy()
+            newGame.updateScore(PAInPlayerRow);
+            PAInPlayerRow.clear()
+            newGame.remove(PAInPlayerRow);
         }
 
-        // ctx.strokeStyle = "purple" // lanes
 
-        // ctx.beginPath();
-        // ctx.moveTo(77, 77);
-        // ctx.lineTo(77, 455);
-        // ctx.stroke();
-        
-        // // lane 1
-        // ctx.beginPath();
-        // ctx.moveTo(77, 77);
-        // ctx.lineTo(810, 77);
-        // ctx.stroke();
-        
-        // // lane 2
-        // ctx.beginPath();
-        // ctx.moveTo(77, 267);
-        // ctx.lineTo(810, 270);
-        // ctx.stroke();
-        
-        // // lane 3
-        // ctx.beginPath();
-        // ctx.moveTo(77, 455);
-        // ctx.lineTo(810, 455);
-        // ctx.stroke();
+        newGame.updateLevel()
 
         testplayer.draw();
     }
-    
     animate();
 });

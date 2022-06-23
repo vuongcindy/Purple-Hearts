@@ -95,18 +95,26 @@ body {
   justify-content: center;
 }
 
-// .links:hover {
-//   cursor: crosshair;
-// }
-
-.displayLivesRemaining {
-  color: black;
+.game-canvas {
   display: flex;
   justify-content: center;
-  font-size: 2rem;
-  margin: 1rem;
-  font-family: Arial, Helvetica, sans-serif;
 }
+
+.scoreboard_and_level {
+  color: black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1rem;
+  text-align: center;
+  font-size: 2rem;
+}
+.scoreboard_text,
+.level_text {
+  text-decoration: underline;
+  padding-bottom: .5rem;
+}
+
 
 .cat_1 {
   mix-blend-mode: multiply;
