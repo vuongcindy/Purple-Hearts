@@ -46,7 +46,7 @@ class PotentialArmy {
 
     updatePos() {
         if (this.pos.x > 35) {
-            this.pos.x += (-2);
+            this.pos.x += (-3);
         } else if (this.pos.x <= 35) {
             this.clear()
         }

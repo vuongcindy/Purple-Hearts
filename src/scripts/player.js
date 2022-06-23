@@ -1,3 +1,4 @@
+import Heart from "./heart";
 class Player {
     constructor({ pos, color = "#AFEEEE" }) {
         this.pos = pos;
@@ -17,6 +18,15 @@ class Player {
         let playerImg = document.getElementById("player_img")
         ctx.drawImage(playerImg, this.pos.x, this.pos.y, this.width, this.height);
     };
+
+    shootHeart() {
+        const heart = new Heart({
+            pos: this.pos,
+            vel: 3,
+            color: this.color
+        })
+        this.game.add(heart)
+    }
     
 } 
 
