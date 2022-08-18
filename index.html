@@ -12,6 +12,31 @@
     <script src="./dist/main.js"></script>
   </head>
   
+  <div id="popup">
+    <br>
+    <!-- <img id="popup-img" src="assets/images/lose.gif"> -->
+    <div>
+      <div id="game-instructions">
+        <h1>Gameplay</h1><br />
+        <h2>Instructions</h2>
+        <ul>
+          <li>• Use UP and DOWN arrow keys to move between the three lanes</li>
+          <li>• Once you're in the same row as a enemy, type the attached word to destroy the enemy</li>
+        </ul>
+        <br />
+        <h2>Scores</h2>
+        <ul>
+          <li>• Each correct letter earns you one point</li>
+          <li>• Every ten points increases the level as well as the speed</li>
+          <li>• Get as many points as you can in one minute!</li>
+        </ul>
+      </div>
+      <div id="endgame-message" style="display:none">
+        div
+      </div>
+    </div>
+    <button id="start-button">Start Game</button>
+  </div>
   
   <header>
     <div class="links">
@@ -37,10 +62,12 @@
   
   <body>
     <canvas id="game-canvas" width="900" height="600"></canvas>
+    
+
     <div style="display: none">
-      <img src="assets/images/356447330025211.png" id="player_img" alt="player">
-      <img src="assets/images/potential_army.png" id="potential_army" alt="potential_army">
-      <audio id="music" src="assets/audio/spring_day.mp3"></audio>
+      <img src="assets/images/player.png" id="player_img" alt="player">
+      <img src="assets/images/enemy.png" id="enemy_img" alt="enemy">
+      <!-- <audio id="music" src="assets/audio/spring_day.mp3"></audio> -->
       <!-- <div id="'start-screen" class="screen" style="display:block">
         <button onClick="startGame()">Start Game</button>
         <canvas id="canvas" style=""></canvas> -->
@@ -50,11 +77,13 @@
 
     
     <div class="main-container">
-      <div class="song-display" id="songDisplay">input box
+      <div class="text-display" id="textDisplay">input box
       </div>
-      <textarea id="songInput" class="song-input" autofocus></textarea>
+      <textarea id="textInput" class="text-input" autofocus></textarea>
     </div>
     <script type="module" src="/src/index.js"></script>
+
+    
   </body>
 
 </html>

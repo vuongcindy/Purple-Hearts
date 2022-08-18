@@ -1,9 +1,7 @@
-// import Player from "./player.js";
-// import Heart from "./heart.js";
-import PotentialArmy from "./potential_army.js";
+import Enemy from "./enemy.js";
 class Game {
     constructor() {
-        this.currentPotentialArmy = [];
+        this.currentEnemy = [];
         this.hearts = [];
         this.width = 100;
         this.height = 75;
@@ -12,8 +10,8 @@ class Game {
     }
 
     // add(obj) {
-    //     if (obj instanceof PotentialArmy) {
-    //         this.currentPotentialArmy.push(new PotentialArmy({ pos: {x: 0, y: 0}}))
+    //     if (obj instanceof Enemy) {
+    //         this.currentEnemy.push(new Enemy({ pos: {x: 0, y: 0}}))
     //     } else if (obj instanceof Heart) {
     //         this.hearts.push(new Heart())
     //     } else {
@@ -24,10 +22,10 @@ class Game {
     newPotentialArmy() {
         let t = this.delayTimer();
 
-        if(this.currentPotentialArmy.length < 15) {
-            let newPotentialArmy = new PotentialArmy( {pos: {x: 0, y: 0}} );
+        if(this.currentEnemy.length < 15) {
+            let newPotentialArmy = new Enemy( {pos: {x: 0, y: 0}} );
             newPotentialArmy.randomStartPos()
-            this.currentPotentialArmy.push(newPotentialArmy);
+            this.currentEnemy.push(newPotentialArmy);
             setTimeout(() => {
                 this.newPotentialArmy()
             }, t)
@@ -52,7 +50,6 @@ class Game {
 
     increaseLevel() {
         var level = parseInt(document.getElementById('current_level').innerHTML)
-        var score = parseInt(document.getElementById('current_score').innerHTML)
         var currentLvlScore = parseInt(document.getElementById('current_level_score').innerHTML)
 
         if(currentLvlScore / 10 > 1) {
@@ -85,8 +82,8 @@ class Game {
     //     } 
     // }
 
-    remove(potentialArmy) {
-        this.currentPotentialArmy.splice(this.currentPotentialArmy.indexOf(potentialArmy), 1);
+    remove(enemy) {
+        this.currentEnemy.splice(this.currentEnemy.indexOf(enemy), 1);
     }
 
     // 1 - 4 secs in ms
@@ -95,7 +92,7 @@ class Game {
     }
 
     // allObjects() {
-    //     return [].concat(this.currentPotentialArmy, this.hearts);
+    //     return [].concat(this.currentEnemy, this.hearts);
     // };
 
     // checkCollisions() {

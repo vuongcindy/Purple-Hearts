@@ -1,7 +1,7 @@
-const songDisplayElement = document.getElementById('songDisplay');
-const songInputElement = document.getElementById('songInput');
+const textDisplayElement = document.getElementById('textDisplay');
+const textInputElement = document.getElementById('textInput');
 
-class PotentialArmy {
+class Enemy {
     constructor({ pos, color = "black", velX = 0}) {
         this.pos = pos;
         this.color = color;
@@ -25,9 +25,9 @@ class PotentialArmy {
     drawPA() {
         const canvas = document.getElementById("game-canvas");
         const ctx = canvas.getContext("2d");
-        let cat1Img = document.getElementById("potential_army")
+        let enemy = document.getElementById("enemy_img")
         
-        ctx.drawImage(cat1Img, this.pos.x, this.pos.y, this.width, this.height);
+        ctx.drawImage(enemy, this.pos.x, this.pos.y, this.width, this.height);
         
         ctx.fillStyle = "black"
         ctx.fillText(this.currentSong, this.pos.x + 10, this.pos.y + 75);
@@ -53,40 +53,6 @@ class PotentialArmy {
             this.clear()
         }
     }
-
-    // updateSong() {
-    //     songDisplayElement.textContent = null;
-    //     this.currentSong.split('').forEach(char => {
-    //         const charSpan = document.createElement('span')
-    //         charSpan.innerText = char
-    //         songDisplayElement.appendChild(charSpan)
-    //     })
-    // }
-
-    // processInputText() {
-    //     let charTyped = 0
-    //     let currentInput = songInputElement.value;
-    //     let currentInputArr = currentInput.split('');
-
-    //     charTyped++;
-
-    //     songSpanArr = songDisplayElement.querySelectorAll('span');
-    //     songSpanArr.forEach((char, i) => {
-    //         let typedChar = currentInputArr[i];
-
-    //         //char not currently typed
-    //         if (typedChar === null) {
-    //             char.classList.remove('correctChar');
-    //             char.classList.remove('incorrectChar');
-    //         } else if (typedChar === char.innerText) {
-    //             char.classList.add('correctChar');
-    //             char.classList.remove('incorrectChar');
-    //         } else {
-    //             char.classList.add('incorrectChar');
-    //             char.classList.remove('correctChar');
-    //         }
-    //     });
-    // }
 }
 
-export default PotentialArmy;
+export default Enemy;
