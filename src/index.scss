@@ -114,7 +114,7 @@ body {
   background-color: white;
   color:black;
   width: 1200px;
-  height: 1000px;
+  height: 725px;
   display: inline-block;
   margin-top: 150px;
   // z-index: 999;
@@ -130,6 +130,7 @@ body {
     justify-content: center;
     margin-left: 100px;
     margin-right: 100px;
+    line-height: 1.5;
   }
 
   h1 {
@@ -165,9 +166,10 @@ body {
   // background-color: green;
   display: flex;
   justify-content: center;
+  margin-top: 145px;
 
   #start-button, #replay-button {
-    width: 300px;
+    width: 250px;
     height: 50px;
     background-color: #D8BFD8;
     border: none;
@@ -179,6 +181,11 @@ body {
       background-color: white;
       color: black;
       text-decoration: underline;
+      cursor: pointer;
     }
   }
+}
+
+#endgame-message {
+  
 }

@@ -131,6 +131,7 @@ body {
   justify-content: center;
   margin-left: 100px;
   margin-right: 100px;
+  line-height: 1.5;
 }
 #popup h1 {
   font-family: Arial, Helvetica, sans-serif;
@@ -158,16 +159,17 @@ body {
 #start, #replay {
   display: flex;
   justify-content: center;
+  margin-top: 145px;
 }
-#start #start-button, #replay #replay-button {
-  width: 300px;
+#start #start-button, #start #replay-button, #replay #start-button, #replay #replay-button {
+  width: 250px;
   height: 50px;
   background-color: #D8BFD8;
   border: none;
   font-size: 28px;
   border-radius: 0.25rem;
 }
-#start #start-button:hover, #replay #replay-button:hover {
+#start #start-button:hover, #start #replay-button:hover, #replay #start-button:hover, #replay #replay-button:hover {
   border: 2px solid #D8BFD8;
   background-color: white;
   color: black;

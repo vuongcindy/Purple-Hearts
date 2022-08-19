@@ -18,6 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const replayButton = document.getElementById('replay-button');
     const endgameMessage = document.getElementById('endgame-message');
     const endgameScore = document.getElementById('end-score');
+    const input = document.querySelector('#textInput');
     
     startButton.addEventListener('click', () => {
         popup.style.display = 'none'
@@ -27,11 +28,15 @@ window.addEventListener('DOMContentLoaded', () => {
         newGame.newPotentialArmy();
         timer = 10;
         decreaseTimer()
+        input.focus();
     })
 
     replayButton.addEventListener('click', () => {
         window.location.reload()
     })
+
+    
+
 
     const testplayer = new Player({
         pos: {

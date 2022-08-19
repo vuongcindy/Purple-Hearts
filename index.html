@@ -17,14 +17,17 @@
     <!-- <img id="popup-img" src="assets/images/lose.gif"> -->
     <div>
       <div id="game-instructions">
-        <h1>Purple Hearts</h1>
+        <!-- <h1>Purple Hearts</h1> -->
         <h1>Instructions</h1>
         <ul>
-          <li>• Use UP and DOWN arrow keys to move between the three lanes</li>
-          <li>• Once you're in the same row as a enemy, type the attached word to destroy the enemy</li>
+          <li>• Use UP and DOWN arrow keys to move between the three lanes &nbsp;
+            <img src="assets/images/arrow-keys.jpg" id="arrow-keys" height="50">
+          </li>
+          <li>• Pick a row with an enemy</li>
+          <li>• Type the word attached to the enemy to destroy it</li>
         </ul>
-        <br />
-        <h1>Scores</h1>
+        <br /><br />
+        <h1>Earning Points</h1>
         <ul>
           <li>• Each correct letter earns you one point</li>
           <li>• Every ten points increases the level as well as the speed</li>
@@ -37,9 +40,11 @@
       
       <div id="endgame-message" style="display:none">
         <!-- <div> -->
-          <h2>Game Over!</h2>
+          <h2>Game Over!</h2><br/>
           <h1>Final Score: &nbsp; <strong id="end-score">0</strong></h1>
-          <button id="replay-button">Replay</button>
+          <div id="replay">
+            <button id="replay-button">Replay</button>
+          </div>
           </div>
         </div>
       <!-- </div> -->
