@@ -91,21 +91,94 @@ body {
   justify-content: center;
 }
 
-.scoreboard_and_level {
+.scoreboard_level_timer {
   color: black;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   font-family: Arial, Helvetica, sans-serif;
   padding: 1rem;
   text-align: center;
   font-size: 2rem;
 }
 .scoreboard_text,
-.level_text {
+.level_text, .timer_text {
   text-decoration: underline;
   padding-bottom: .5rem;
 }
 
 #player_img {
   mix-blend-mode: multiply;
+}
+
+#popup {
+  background-color: white;
+  color:black;
+  width: 1200px;
+  height: 725px;
+  display: inline-block;
+  margin-top: 150px;
+  // z-index: 999;
+  position: fixed;
+  border-radius: 0.25rem;
+
+  #game-instructions {
+    display: flex;
+    flex-direction: column;
+    // background-color: green;
+    height: 500px;
+    // align-items: center;
+    justify-content: center;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    // text-decoration: underline;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+  }
+
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+  }
+
+  li {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+  }
+
+  #endgame-message {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: center;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  
+}
+
+#start, #replay {
+  // background-color: green;
+  display: flex;
+  justify-content: center;
+
+  #start-button, #replay-button {
+    width: 300px;
+    height: 50px;
+    background-color: #D8BFD8;
+    border: none;
+    font-size: 28px;
+    border-radius: 0.25rem;
+
+    &:hover {
+      border: 2px solid #D8BFD8;
+      background-color: white;
+      color: black;
+      text-decoration: underline;
+    }
+  }
 }

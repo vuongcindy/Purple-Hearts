@@ -94,10 +94,10 @@ body {
   justify-content: center;
 }
 
-.scoreboard_and_level {
+.scoreboard_level_timer {
   color: black;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   font-family: Arial, Helvetica, sans-serif;
   padding: 1rem;
   text-align: center;
@@ -105,7 +105,7 @@ body {
 }
 
 .scoreboard_text,
-.level_text {
+.level_text, .timer_text {
   text-decoration: underline;
   padding-bottom: 0.5rem;
 }
@@ -115,56 +115,62 @@ body {
 }
 
 #popup {
-  z-index: 999;
-  position: fixed;
-  width: 1250px;
-  height: 750px;
-  top: 370px;
-  padding: 30px;
   background-color: white;
-  border-radius: 20px;
-  font-size: 30px;
-  line-height: 28px;
   color: black;
+  width: 1200px;
+  height: 725px;
+  display: inline-block;
+  margin-top: 150px;
+  position: fixed;
+  border-radius: 0.25rem;
+}
+#popup #game-instructions {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  height: 500px;
+  justify-content: center;
+  margin-left: 100px;
+  margin-right: 100px;
 }
-
-#popup div {
-  background-color: white;
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-}
-
-#game-instructions h1{
-  text-decoration: underline;
+#popup h1 {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 32px;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+}
+#popup h2 {
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+}
+#popup li {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+}
+#popup #endgame-message {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  justify-content: center;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
-#game-instructions h2{
-  font-size: 28px;
-  font-family: Arial, Helvetica, sans-serif;
+#start, #replay {
+  display: flex;
+  justify-content: center;
 }
-
-div#game-instructions ul {
-  margin-left: 50px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 28px;
-}
-
-
-#start-button {
+#start #start-button, #replay #replay-button {
   width: 300px;
-  height: 54px;
-  font-size: 25px;
+  height: 50px;
   background-color: #D8BFD8;
+  border: none;
+  font-size: 28px;
+  border-radius: 0.25rem;
+}
+#start #start-button:hover, #replay #replay-button:hover {
+  border: 2px solid #D8BFD8;
+  background-color: white;
   color: black;
-  border-radius: 20px;
-  margin: 30px 0px;
-  position: relative;
+  text-decoration: underline;
   cursor: pointer;
 }

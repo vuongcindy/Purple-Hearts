@@ -17,25 +17,33 @@
     <!-- <img id="popup-img" src="assets/images/lose.gif"> -->
     <div>
       <div id="game-instructions">
-        <h1>Gameplay</h1><br />
-        <h2>Instructions</h2>
+        <h1>Instructions</h1>
         <ul>
           <li>• Use UP and DOWN arrow keys to move between the three lanes</li>
           <li>• Once you're in the same row as a enemy, type the attached word to destroy the enemy</li>
         </ul>
         <br />
-        <h2>Scores</h2>
+        <h1>Scores</h1>
         <ul>
           <li>• Each correct letter earns you one point</li>
           <li>• Every ten points increases the level as well as the speed</li>
           <li>• Get as many points as you can in one minute!</li>
         </ul>
       </div>
-      <div id="endgame-message" style="display:none">
-        div
+      <div id="start">
+        <button id="start-button">Start Game</button>
       </div>
+      
+      <div id="endgame-message" style="display:none">
+        <!-- <div> -->
+          <h2>Game Over!</h2>
+          <h1>Final Score: &nbsp; <strong id="end-score">0</strong></h1>
+          <button id="replay-button">Replay</button>
+          </div>
+        </div>
+      <!-- </div> -->
     </div>
-    <button id="start-button">Start Game</button>
+
   </div>
   
   <header>
@@ -51,12 +59,14 @@
       </a>
     </div>
     <title>Purple Hearts 💜 </title>
-    <div class="scoreboard_and_level">
+    <div class="scoreboard_level_timer">
       <div class="scoreboard_text">Score</div>
       <div class="level_text">Level</div>
+      <div class="timer_text">Timer</div>
       <div id="current_score">0</div>
       <div id="current_level">1</div>
       <div id="current_level_score" style="display: none">0</div>
+      <div id="time_left">10</div>
     </div>
   </header>
   
