@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
         replayButton.style.display = 'none'
 
         newGame.newPotentialArmy();
-        timer = 10;
+        timer = 60;
         decreaseTimer()
         input.focus();
     })
@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
     //     endScoreMessage.innerText = `${this.current_score.toLocaleString()}`
     // }
 
-    let timer = 10
+    let timer = 60
     let timerId
     function decreaseTimer() {
         if (timer > 0) {
