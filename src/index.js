@@ -26,16 +26,14 @@ window.addEventListener('DOMContentLoaded', () => {
         replayButton.style.display = 'none'
 
         newGame.newPotentialArmy();
+        input.focus();
         timer = 60;
         decreaseTimer()
-        input.focus();
     })
 
     replayButton.addEventListener('click', () => {
         window.location.reload()
     })
-
-    
 
 
     const testplayer = new Player({
